@@ -231,15 +231,14 @@ function DashboardData(props) {
             <TableRepresentation columnname="Country" isDataUploaded={props.isDataUploaded} />
 
             <EmployeeStatusGraph columnname="Employee Status" isDataUploaded={props.isDataUploaded} />
+            <CategoryGraph columnname="Country" isDataUploaded={props.isDataUploaded} />
             {/* <AllocationPerGraph columnname="Allocation Percentage" isDataUploaded={props.isDataUploaded} /> */}
 
           </div>
 
-          <div className="d-flex justify-content-around" style={{ marginTop: '2rem' }}>
-            <CategoryGraph columnname="Country" isDataUploaded={props.isDataUploaded} />
-
-          
-          </div>
+          {/* <div className="d-flex justify-content-around" style={{ marginTop: '2rem' }}>
+                     
+          </div> */}
 
           
         {isUser ? null : (
