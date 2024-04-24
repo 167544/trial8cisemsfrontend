@@ -30,7 +30,7 @@ const Topbar = (props) => {
   return (
     <Box display="flex" justifyContent="space-between" p={2} ml={0.2} sx={{background:"#0A6E7C"}}>
       <img src={logos} alt="logo" width={"50px"} height={"50px"} />
-      <h2 style={{color:"white",fontWeight:"bold"}}>CIS Employee Management Portal</h2>
+      <h2 style={{color:"white",fontWeight:"bold"}}>CIS Employee Skill Portal</h2>
       {/* SEARCH BAR */}
       {/* <Box
         display="flex"

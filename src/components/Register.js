@@ -121,7 +121,7 @@ function Register(props) {
             <div style={{ display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'center', minHeight: '100vh', backgroundColor: '#0A6E7C', color: 'white' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: "12px", backgroundColor: '#0A6E7C' }}>
                 <img src={logos} alt="logo" width={"50px"} height={"50px"} />
-                <h2 style={{ color: "white", fontWeight: "bold", marginLeft: "10px" }}>CIS Employee Management Portal</h2>
+                <h2 style={{ color: "white", fontWeight: "bold", marginLeft: "10px" }}>CIS Employee Skill Portal</h2>
             </div>
             <div style={{ border: '1px solid white', width: '90%', maxWidth: '500px', padding: '20px', textAlign: 'center', borderRadius: '10px', margin: '20px auto' }}>
                 <h1>Registration Form</h1>

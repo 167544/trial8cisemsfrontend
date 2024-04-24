@@ -7,7 +7,7 @@ const TableRepresentation = ({ columnname }) => {
 
   const graphbox = {
     borderRadius: '10px',
-    height: '330px',
+    height: '340px',
     width: '50%',
     padding: '1rem',
     boxShadow: '1px 5px 5px ',
@@ -48,10 +48,44 @@ const TableRepresentation = ({ columnname }) => {
   };
 
   const [countryCounts, setCountryCounts] = useState(getCountsByCountry());
+  const [sortOrder, setSortOrder] = useState({
+    Country: 'asc',
+    Continent: 'asc',
+    Count: 'asc'
+  });
 
   useEffect(() => {
     setCountryCounts(getCountsByCountry());
   }, [data]);
+
+  const handleSort = (columnName) => {
+    const newSortOrder = {
+      ...sortOrder,
+      [columnName]: sortOrder[columnName] === 'asc' ? 'desc' : 'asc'
+    };
+    setSortOrder(newSortOrder);
+
+    const sortedData = [...countryCounts].sort((a, b) => {
+      if (columnName === 'Country') {
+        return newSortOrder[columnName] === 'asc' ? a._id.localeCompare(b._id) : b._id.localeCompare(a._id);
+      } else if (columnName === 'Continent') {
+        return newSortOrder[columnName] === 'asc' ? country_codes[a._id].localeCompare(country_codes[b._id]) : country_codes[b._id].localeCompare(country_codes[a._id]);
+      } else if (columnName === 'Count') {
+        return newSortOrder[columnName] === 'asc' ? a.count - b.count : b.count - a.count;
+      }
+      return 0;
+    });
+
+    setCountryCounts(sortedData);
+  };
+
+  const getSortIcon = (columnName) => {
+    if (sortOrder[columnName] === 'asc') {
+      return <span>&#9650;</span>; // Upward triangle
+    } else {
+      return <span>&#9660;</span>; // Downward triangle
+    }
+  };
 
   return (
     <div className="m-2" style={graphbox}>
@@ -63,9 +97,15 @@ const TableRepresentation = ({ columnname }) => {
         <table className="custom-table">
           <thead>
             <tr>
-              <th>Country</th>
-              <th>Continent</th>
-              <th>Count</th>
+              <th onClick={() => handleSort('Country')}>
+                Country {getSortIcon('Country')}
+              </th>
+              <th onClick={() => handleSort('Continent')}>
+                Continent {getSortIcon('Continent')}
+              </th>
+              <th onClick={() => handleSort('Count')}>
+                Count {getSortIcon('Count')}
+              </th>
             </tr>
           </thead>
           <tbody>

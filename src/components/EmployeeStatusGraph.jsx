@@ -12,8 +12,8 @@ const EmployeeStatusGraph = (props) => {
 
   const graphbox = {
     borderRadius:'10px',
-    height:'330px',
-    width:"50%",
+    height:'340px',
+    width:"70%",
     padding:"1rem",
     boxShadow:"1px 5px 5px  "
 }
@@ -75,7 +75,7 @@ const EmployeeStatusGraph = (props) => {
       .attr('y', d => y(d.count))
       .attr('width', x.bandwidth())
       .attr('height', d => height - y(d.count))
-      .style('fill', 'lightgreen');
+      .style('fill', '#0A6E7D');
   
     g.selectAll('.bar-label')
       .data(statusCounts)

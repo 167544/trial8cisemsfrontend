@@ -97,7 +97,7 @@ function AddNewEmployee({ handleInsert }) {
 
   return (
     <div>
-      <Button backgroundColor="#0A6E7C" onClick={toggle}>
+      <Button backgroundColor="#0A6E7D" onClick={toggle}>
         Add New Employee
       </Button>
       <Modal isOpen={modal} toggle={toggle}>

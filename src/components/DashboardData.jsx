@@ -215,21 +215,22 @@ function DashboardData(props) {
 
           </div>
           <div className="d-flex justify-content-center" style={{ marginTop: '1rem' }}>
-            <div style={{ width: '30%', textAlign: 'center' }}>
+            <div style={{ width: '30%', textAlign: 'center', marginRight: '1rem' }}>
               <BandGraph isDataUploaded={props.isDataUploaded} />
             </div>
-            <div style={{ width: '40%', textAlign: 'center' }}>
+            <div style={{ width: '40%', textAlign: 'center', marginRight: '1rem' }}>
               <USTExp isDataUploaded={props.isDataUploaded} />
 
             </div>
-            <div style={{ width: '30%', textAlign: 'center' }}>
+            <div style={{ width: '30%', textAlign: 'center', marginRight: '1rem' }}>
               <ResourceType columnname="Resource Type" isDataUploaded={props.isDataUploaded} />
 
             </div>
           </div>
-          <div className="d-flex justify-content-around" style={{ marginTop: '2rem' }}>
-            <TableRepresentation columnname="Country" isDataUploaded={props.isDataUploaded} />
-
+          <div className="d-flex justify-content-around" style={{ marginTop: '3rem' }}>
+          
+            <TableRepresentation columnname="Country" isDataUploaded={props.isDataUploaded} style={{ width: '30%', height: '340px' }} />
+          
             <EmployeeStatusGraph columnname="Employee Status" isDataUploaded={props.isDataUploaded} />
             <CategoryGraph columnname="Country" isDataUploaded={props.isDataUploaded} />
             {/* <AllocationPerGraph columnname="Allocation Percentage" isDataUploaded={props.isDataUploaded} /> */}
