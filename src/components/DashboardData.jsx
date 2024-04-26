@@ -246,7 +246,7 @@ function DashboardData(props) {
           <>
 
           <Button className="m-2" variant="contained" color="primary" onClick={() => handleBoxClick('selectedlist')}>Shortlist List</Button>
-          <Button className="m-2" variant="contained" color="primary" onClick={() => handleBoxClick('removedlist')}>Removed List</Button>
+          {/* <Button className="m-2" variant="contained" color="primary" onClick={() => handleBoxClick('removedlist')}>Removed List</Button> */}
 
           {showRepresentation && <DashboardRepresentation data={selectedBoxName} />}
           </>

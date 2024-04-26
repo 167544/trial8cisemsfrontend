@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Form, Input, Label } from 'reactstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import setdata from '../../actions';
 
 function UpdateUserDetails({ id, handleUpdate }) {
@@ -11,6 +11,8 @@ function UpdateUserDetails({ id, handleUpdate }) {
   const [formData, setFormData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [clickedCell, setClickedCell] = useState(null); // State to keep track of clicked cell
+  const empData = useSelector((state) => state.Empdata);
+  console.log("av-emp-data2",empData);
   const dispatch = useDispatch();
 
 
@@ -53,8 +55,30 @@ function UpdateUserDetails({ id, handleUpdate }) {
     'Primary Skill',
     'Skill Category for Primary Skill',
     'Skill Level for Primary Skill',
+    'Secondary Skill',
+    'Skill Category for Secondary Skill',
+    'Skill Level for Secondary Skill'
   ];
 
+  const dropdownColumns =[
+    'Category',
+    'Skill Category for Primary Skill',
+    'Skill Level for Primary Skill',
+    'Skill Category for Secondary Skill',
+    'Skill Level for Secondary Skill'
+  ]; 
+
+ const disabledColumns = [
+    'Employee ID',
+    'Employee Name',
+    'Band',
+    'Employee Type',
+    'OBU',
+    'OBU Description',
+    'Customer ID',
+    'Customer Name',
+  ]
+  
   useEffect(() => {
     if (modal && id) {
       fetchData(id);
@@ -132,6 +156,28 @@ function UpdateUserDetails({ id, handleUpdate }) {
               {columnNames.map((columnName) => (
                 <FormGroup key={columnName}>
                   <Label for={columnName}>{columnName}</Label>
+                  {dropdownColumns.includes(columnName) ? (
+        <Input
+          type="select"
+          name={columnName}
+          value={formData[columnName] || ''}
+          onChange={handleChange}
+        >
+          <option value="">Select {columnName}</option>
+              {[...new Set(empData.map(obj => obj[columnName]))]
+              // .filter(optionValue => optionValue !== null)  // Remove null values
+              // .sort((a, b) => a.localeCompare(b))  // Sort values in ascending order
+              .map((optionValue) => {
+                console.log("av-col:",columnName,optionValue);  // Log columnName
+                return (
+          <option key={optionValue} value={optionValue}>
+            {optionValue}
+          </option>
+          );
+})}
+
+        </Input>
+      ) : (
                   <Input
                     id={columnName}
                     name={columnName}
@@ -141,8 +187,10 @@ function UpdateUserDetails({ id, handleUpdate }) {
                     onChange={handleChange}
                     style={{ flex: clickedCell === columnName ? 2 : 1 }} // Conditionally set flex value
                     onClick={() => handleCellClick(columnName)} // Handle cell click
-                    readOnly={columnName === 'Employee ID'}
+                    //readOnly={columnName === 'Employee ID'}
+					disabled={disabledColumns.includes(columnName)}
                   />
+                )}
                 </FormGroup>
               ))}
               <Button type="submit" color="primary">

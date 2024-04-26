@@ -41,7 +41,7 @@ const PrimarySkills = (props) => {
         <p>Loading...</p>
       ) : (
         <Select
-          options={primarySkills.map((name) => ({
+          options={primarySkills.sort().map((name) => ({
             value: name,
             label: name
           }))}

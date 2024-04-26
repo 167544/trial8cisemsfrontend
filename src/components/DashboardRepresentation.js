@@ -25,14 +25,16 @@ function DashboardRepresentation(props) {
     { field: 'Skill Category for Primary Skill', headerName: 'Skill Category for Primary Skill', flex: 2 },
     { field: 'Skill Level for Primary Skill', headerName: 'Skill Level for Primary Skill', flex: 2 },
     { field: 'Tools Known', headerName: 'Tools Known', flex: 1 },
+    { field: 'VISA "YES" Country', headerName: 'VISA "YES" Country', flex: 1 },
+
     {
       field: 'actions',
       headerName: 'Actions',
       flex: 2,
       renderCell: (params) => (
-        <div style={{ margin: "10px" }}>
-          <button onClick={() => addedToShortlist(params.row['Employee ID'])} className='btn  m-1' style={{ backgroundColor: '#0A6E7C', color: 'white' }}>Add </button>
-          <button onClick={() => RemoveFromList(params.row['Employee ID'])} className='btn m-1 ' style={{ backgroundColor: '#0A6E7C', color: 'white' }}>Remove </button>
+        <div>
+          <button onClick={() => addedToShortlist(params.row['Employee ID'])} className='btn px-4 ms-3' style={{ backgroundColor: '#549aa3', color: 'white'}}>Add</button>
+          {/* <button onClick={() => RemoveFromList(params.row['Employee ID'])} className='btn m-1 ' style={{ backgroundColor: '#0A6E7C', color: 'white' }}>Remove </button> */}
         </div>
       ),
     },
@@ -41,9 +43,9 @@ function DashboardRepresentation(props) {
 
   const addedToShortlist = async (id) => {
     try {
-      alert("Selected and added to selection list " + id);
+      alert("Selected  " + id);
       const response = await axios.put(`http://localhost:3004/addtoshortlist/${id}`);
-
+      console.log("Testing Add to shortlist " ,response)
     } catch (error) {
       console.error(error);
     }
