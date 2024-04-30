@@ -143,7 +143,11 @@ const Contacts = () => {
         headerName: "delete",
         flex: 2,
         renderCell: (params) => (
-          <Button onClick={() => handleDelete(params.row['Employee ID'])}> Delete </Button>
+          <Button onClick={() => handleDelete(params.row['Employee ID'])}
+          disabled={true}
+          > 
+          Delete 
+          </Button>
         ),
       }
     ];

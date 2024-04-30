@@ -57,7 +57,10 @@ function UpdateUserDetails({ id, handleUpdate }) {
     'Skill Level for Primary Skill',
     'Secondary Skill',
     'Skill Category for Secondary Skill',
-    'Skill Level for Secondary Skill'
+    'Skill Level for Secondary Skill',
+    'Tools Known',
+    'Certifications',
+    'Resume'
   ];
 
   const dropdownColumns =[
