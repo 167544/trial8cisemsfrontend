@@ -37,8 +37,6 @@ function DashboardData(props) {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const employeeSelected = useSelector((state) => state.selectedData);
-  console.log("emp selected")
-  console.log(employeeSelected)
   const [managerFilter, setManagerFilter] = useState('');
   const [managerKey, setManagerKey] = useState(0); // Key to force reload ManagerSelect
   const [primarySkillsKey, setPrimarySkillsKey] = useState(0); // Key for PrimarySkills component
@@ -88,7 +86,6 @@ function DashboardData(props) {
     let empActive = employeeSelected.filter((item) => item['Employee Status'] === 'Active')
 
     let empwithCustomer = [...new Set(employeeSelected.map(item => item['Customer ID']))];
-    console.log("customerA" + empwithCustomer.length)
     setCustomerCount(empwithCustomer.length)
     let empwithValidVisa = employeeSelected.filter((item) => item['Resource with Valid VISA'])
     setActiveEmployeeCount(empActive.length)
@@ -171,9 +168,7 @@ function DashboardData(props) {
     { title: 'Active Employee Count', value: activeEmployeeCount, color: "#01B27C" },
     { title: 'Resources with Valid Visa', value: resourceWithValidVisaCount, color: "#003C51" },
   ];
-  console.log("isUser:", isUser);
-  console.log("isSuperAdmin:", isSuperAdmin);
-  console.log("isManagerSelectDisabled:", isManagerSelectDisabled);
+  
   return (
     <>
       <span style={{ display: 'inline-block', marginBottom: '1rem', width: '100%', }}>
@@ -185,7 +180,7 @@ function DashboardData(props) {
           )}
           <Category handleBoxClick={handleCategory} />
           <PrimarySkills handleBoxClick={handlePrimarySelect} />
-          <Button style={{ padding: '21px', height: '35px' }} className="m-2" variant="contained" color="primary" onClick={resetSelectComponent}>Reset</Button>
+          <a style={{  height: '35px', cursor:'pointer'}} className="mt-4" variant="contained" color="primary" onClick={resetSelectComponent}>Reset</a>
           </>
         )}
          <div style={{ display: 'flex', marginLeft: 'auto ' }}>

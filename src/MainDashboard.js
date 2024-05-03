@@ -23,7 +23,6 @@ function MainDashboard(props) {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const  data = useSelector((state)=>(state))
-  console.log(data)
   return (
     <Provider store={store}>
         <ThemeProvider theme={theme}>

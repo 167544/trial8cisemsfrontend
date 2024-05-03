@@ -7,7 +7,7 @@ const BandGraph = ({ isDataUploaded }) => {
     const [data, setData] = useState(null);
     const employeeData = useSelector((state) => state.selectedData);
     
-    console.log("redux", employeeData);
+   // console.log("redux", employeeData);
 
     const graphbox = {
         borderRadius:'10px',

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import setdata from '../actions';
 import setSelectedData from '../actions/setSetlecteddata';
+import PrimarySkills from '../scenes/global/PrimarySkills';
 
 
 function DashboardRepresentation(props) {
@@ -94,27 +95,31 @@ function DashboardRepresentation(props) {
 
 
     const fetchEmpOnPrimaryskills = () => {
-      console.log("primary");
-      console.log(EmployeeDatar);
       let skill = props.data.slice(0, -6);
-      console.log(skill)
-      const filteredEmployees = EmployeeDatar.filter(employee => employee['Primary Skill'] === skill);
-      console.log(filteredEmployees);
+      const filteredEmployees = EmployeeDatar.filter(employee => {
+        if(!employee['Primary Skill'])  return false;
+        return employee['Primary Skill'].toLowerCase().search(skill.toLowerCase()) > -1 
+      });
+      console.log('################skillllllllll#############',skill);
+      
       dispatch(setSelectedData(filteredEmployees));
       setRows(filteredEmployees);
     };
     
-
-
-
-
     const fetchEmpOnCategory = async () => {
-      console.log("primary");
-      console.log(EmployeeDatar);
+      // console.log("primary");
+      // console.log(EmployeeDatar);
+      // let category = props.data.slice(0, -8);
+      // console.log(category)
+      // const filteredEmployees = EmployeeDatar.filter(employee => employee['Category'] === category);
+      // console.log(filteredEmployees);
+
       let category = props.data.slice(0, -8);
-      console.log(category)
-      const filteredEmployees = EmployeeDatar.filter(employee => employee['Category'] === category);
-      console.log(filteredEmployees);
+      const filteredEmployees = EmployeeDatar.filter(employee => {
+        if(!employee['Category'])  return false;
+        return employee['Category'].toLowerCase().search(category.toLowerCase()) > -1 
+      });
+
       dispatch(setSelectedData(filteredEmployees));
       setRows(filteredEmployees);
     };
